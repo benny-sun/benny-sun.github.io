@@ -100,18 +100,6 @@
 <p>空間複雜度: O(1)</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $len = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        $max = $i;</span><br><span class="line">        <span class="keyword">for</span> ($j = $i + <span class="number">1</span>; $j &lt; $len; $j++) &#123; <span class="comment">//找出最大值元素的index</span></span><br><span class="line">            <span class="keyword">if</span> ($nums[$j] &gt; $nums[$max]) $max = $j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($nums[$max] &gt; $nums[$i])		<span class="comment">//最大值如果大於當前走訪的元素</span></span><br><span class="line">            swap($nums[$max], $nums[$i]);	<span class="comment">//就兩兩交換</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$a, &amp;$b)</span> </span>&#123;</span><br><span class="line">    $tmp = $a;</span><br><span class="line">    $a = $b;</span><br><span class="line">    $b = $tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<pre class="mermaid" style="text-align: center;">
-            classDiagram
-            class BankAccount{
-    +String owner
-    +BigDecimal balance
-    +deposit(amount) bool
-    +withdrawl(amount) int
-}
-          </pre>
-
-
-
 <div class="note info">
             <p>補充說明<strong>不穩定排序</strong>:<br>若排序數列像是<code>[3,2,3,1]</code>，由小到大排序完，原先第一個<code>3</code>被排在原先第二個<code>3</code>的後面了，因此為不穩定排序。</p>
           </div>]]></content>

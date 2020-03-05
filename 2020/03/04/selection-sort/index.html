@@ -28,7 +28,7 @@
 <meta property="og:description" content="選擇排序，屬於不穩定排序。由左到右遍歷整個數列，找到最大(或小)元素，與當前走訪到的元素交換。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-04T15:53:19.000Z">
-<meta property="article:modified_time" content="2020-03-04T16:25:19.958Z">
+<meta property="article:modified_time" content="2020-03-05T15:06:19.377Z">
 <meta property="article:author" content="Benny Sun">
 <meta property="article:tag" content="sort">
 <meta property="article:tag" content="algorithm">
@@ -205,7 +205,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/selection-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/Hqlgv5VjneMFjO3Tjs-qXuYMoy35rfFJWpk2teWK4u0_j-FKvcCT6H87uV5tKE3NZE85TlX8yNzC6PZjb6fNX2CSygtdWXPr0jiy3MFVDrDl24201U2KNfhz3sY_CPfT4vG67oKdmMXWD4DSOhpVtnCjrJNAY9Gy0T_NUx3lh0NxSS2u14vNkj9W69dVxq3OsRHhDenflBWiTGLj2tZj2JkJIiZS_SxnCiJ4y3iGlFis6hEHHMOrq4Nr83Ou96Jn9dti1mC80Nn9wCuMGu08Ov4s8X2atkF7g4lhtMnVZaAJFBONEqnKVzR5MmZ3wszsdMeRjrQ1EWduH_n1QslxXzJGnU8FfRlLRVbeqMyZjmkZWzK-1VGuOmhrwKEw8lGOBBHsvyGGzpCX3LvupRzeyCGLNKb8tizvVuCfGDzyr5ymDGshEWt3odKsHoDk-h089lXu5aSIgS9m0JPsXSv4OJ_3QrJahGhnugKBxqXGZKygBNxhNYvc-19bJOCycNVgYZGbp-J_2m-Ttw8g2sbv_ho0E-whstcLqDMZz8So2qHA0RR3ZAKoEKd9vT3DnchSQEUPqjP9miUHRWYtRRy_MKT5TgtKyk1C_CI_0UZFaXZGEpYjSGw_PH8lrLyrC-jkyNQYnW3yfn5LL_ViGu9WCLCWeqcmSQKG3xOtFZy7UqZcBQir31gu4AVWrYyp513vC6KNjyYUCeLTSC_brPanMnCCIfSH65mZzWurkKLMMdgT4kh0rQ=w1007-h939-no">
       <meta itemprop="name" content="Benny Sun">
       <meta itemprop="description" content="">
     </span>
@@ -232,7 +232,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-05 00:25:19" itemprop="dateModified" datetime="2020-03-05T00:25:19+08:00">2020-03-05</time>
+                <time title="Modified: 2020-03-05 23:06:19" itemprop="dateModified" datetime="2020-03-05T23:06:19+08:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,18 +268,6 @@
 </ul>
 <p>空間複雜度: O(1)</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $len = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        $max = $i;</span><br><span class="line">        <span class="keyword">for</span> ($j = $i + <span class="number">1</span>; $j &lt; $len; $j++) &#123; <span class="comment">//找出最大值元素的index</span></span><br><span class="line">            <span class="keyword">if</span> ($nums[$j] &gt; $nums[$max]) $max = $j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($nums[$max] &gt; $nums[$i])		<span class="comment">//最大值如果大於當前走訪的元素</span></span><br><span class="line">            swap($nums[$max], $nums[$i]);	<span class="comment">//就兩兩交換</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$a, &amp;$b)</span> </span>&#123;</span><br><span class="line">    $tmp = $a;</span><br><span class="line">    $a = $b;</span><br><span class="line">    $b = $tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<pre class="mermaid" style="text-align: center;">
-            classDiagram
-            class BankAccount{
-    +String owner
-    +BigDecimal balance
-    +deposit(amount) bool
-    +withdrawl(amount) int
-}
-          </pre>
-
-
 
 <div class="note info">
             <p>補充說明<strong>不穩定排序</strong>:<br>若排序數列像是<code>[3,2,3,1]</code>，由小到大排序完，原先第一個<code>3</code>被排在原先第二個<code>3</code>的後面了，因此為不穩定排序。</p>
@@ -375,7 +363,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Benny Sun"
-      src="/images/avatar.gif">
+      src="https://lh3.googleusercontent.com/Hqlgv5VjneMFjO3Tjs-qXuYMoy35rfFJWpk2teWK4u0_j-FKvcCT6H87uV5tKE3NZE85TlX8yNzC6PZjb6fNX2CSygtdWXPr0jiy3MFVDrDl24201U2KNfhz3sY_CPfT4vG67oKdmMXWD4DSOhpVtnCjrJNAY9Gy0T_NUx3lh0NxSS2u14vNkj9W69dVxq3OsRHhDenflBWiTGLj2tZj2JkJIiZS_SxnCiJ4y3iGlFis6hEHHMOrq4Nr83Ou96Jn9dti1mC80Nn9wCuMGu08Ov4s8X2atkF7g4lhtMnVZaAJFBONEqnKVzR5MmZ3wszsdMeRjrQ1EWduH_n1QslxXzJGnU8FfRlLRVbeqMyZjmkZWzK-1VGuOmhrwKEw8lGOBBHsvyGGzpCX3LvupRzeyCGLNKb8tizvVuCfGDzyr5ymDGshEWt3odKsHoDk-h089lXu5aSIgS9m0JPsXSv4OJ_3QrJahGhnugKBxqXGZKygBNxhNYvc-19bJOCycNVgYZGbp-J_2m-Ttw8g2sbv_ho0E-whstcLqDMZz8So2qHA0RR3ZAKoEKd9vT3DnchSQEUPqjP9miUHRWYtRRy_MKT5TgtKyk1C_CI_0UZFaXZGEpYjSGw_PH8lrLyrC-jkyNQYnW3yfn5LL_ViGu9WCLCWeqcmSQKG3xOtFZy7UqZcBQir31gu4AVWrYyp513vC6KNjyYUCeLTSC_brPanMnCCIfSH65mZzWurkKLMMdgT4kh0rQ=w1007-h939-no">
   <p class="site-author-name" itemprop="name">Benny Sun</p>
   <div class="site-description" itemprop="description"></div>
 </div>
