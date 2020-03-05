@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Selection Sort</title>
+    <url>/2020/03/04/selection-sort/</url>
+    <content><![CDATA[<blockquote>
+<p>選擇排序，屬於<strong>不穩定排序</strong>。<br>由左到右遍歷整個數列，找到最大(或小)元素，與當前走訪到的元素交換。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>時間複雜度:</p>
+<ul>
+<li>Best case: O(n<sup>2</sup>)</li>
+<li>Average case: O(n<sup>2</sup>)</li>
+<li>Worst case: O(n<sup>2</sup>)</li>
+</ul>
+<p>空間複雜度: O(1)</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $len = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        $max = $i;</span><br><span class="line">        <span class="keyword">for</span> ($j = $i + <span class="number">1</span>; $j &lt; $len; $j++) &#123; <span class="comment">//找出最大值元素的index</span></span><br><span class="line">            <span class="keyword">if</span> ($nums[$j] &gt; $nums[$max]) $max = $j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($nums[$max] &gt; $nums[$i])		<span class="comment">//最大值如果大於當前走訪的元素</span></span><br><span class="line">            swap($nums[$max], $nums[$i]);	<span class="comment">//就兩兩交換</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$a, &amp;$b)</span> </span>&#123;</span><br><span class="line">    $tmp = $a;</span><br><span class="line">    $a = $b;</span><br><span class="line">    $b = $tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre class="mermaid" style="text-align: center;">
+            classDiagram
+            class BankAccount{
+    +String owner
+    +BigDecimal balance
+    +deposit(amount) bool
+    +withdrawl(amount) int
+}
+          </pre>
+
+
+
+<div class="note info">
+            <p>補充說明<strong>不穩定排序</strong>:<br>若排序數列像是<code>[3,2,3,1]</code>，由小到大排序完，原先第一個<code>3</code>被排在原先第二個<code>3</code>的後面了，因此為不穩定排序。</p>
+          </div>]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>sort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Insertion Sort</title>
+    <url>/2020/03/04/insertion-sort/</url>
+    <content><![CDATA[<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion-Sort"></a>Insertion-Sort</h2><blockquote>
+<p>插入排序，屬於<strong>穩定排序</strong>。</p>
+<p>就好像玩撲克牌整理牌組，將未排序的牌堆插入已排序的牌堆那樣。</p>
+<p>常用在大部分元素已是有序的場景，使用此排序法效率好。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>時間複雜度:</p>
+<ul>
+<li>Best case: O(n)</li>
+<li>Average case: O(n<sup>2</sup>)</li>
+<li>Worst case: O(n<sup>2</sup>)</li>
+</ul>
+<p>空間複雜度: O(1)</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $len = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        $temp = $nums[$i];</span><br><span class="line">        <span class="keyword">for</span> ($j = $i; $j &gt; <span class="number">0</span> &amp;&amp; $nums[$j - <span class="number">1</span>] &gt; $temp; $j--) &#123;</span><br><span class="line">            $nums[$j] = $nums[$j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        $nums[$j] = $temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>sort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bubble Sort</title>
+    <url>/2020/03/04/bubble-sort/</url>
+    <content><![CDATA[<blockquote>
+<p>繁中「氣泡排序」，簡中「冒泡排序」，屬於<strong>穩定排序</strong>。</p>
+<p>由左到右遍歷，當前元素與下一個元素比較，符合條件則兩兩將交換，最後，最大(或小)值會出排在數列的最右端，就好像冒泡泡一樣。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>時間複雜度:</p>
+<ul>
+<li>Best case: O(n)</li>
+<li>Average case: O(n<sup>2</sup>)</li>
+<li>Worst case: O(n<sup>2</sup>)</li>
+</ul>
+<p>空間複雜度: O(1)</p>
+<h2 id="一般版"><a href="#一般版" class="headerlink" title="一般版"></a>一般版</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $len = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> ($j = <span class="number">0</span>; $j &lt; $len - $i - <span class="number">1</span>; $j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ($nums[$j] &lt; $nums[$j + <span class="number">1</span>]) swap($nums[$j], $nums[$j + <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$a, &amp;$b)</span> </span>&#123;</span><br><span class="line">    $tmp = $a;</span><br><span class="line">    $a = $b;</span><br><span class="line">    $b = $tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Flag版"><a href="#Flag版" class="headerlink" title="Flag版"></a>Flag版</h2><p>用一個變數去紀錄數列的狀態，如果內層迴圈迭代完，數字都沒有交換，說明數列已經是有序的，就中止迴圈:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $len = count($nums);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len; $i++) &#123;</span><br><span class="line">        $isSorted = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> ($j = <span class="number">0</span>; $j &lt; $len - $i - <span class="number">1</span>; $j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ($nums[$j] &lt; $nums[$j + <span class="number">1</span>]) &#123;</span><br><span class="line">                swap($nums[$j], $nums[$j + <span class="number">1</span>]);</span><br><span class="line">                $isSorted = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($isSorted) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$a, &amp;$b)</span> </span>&#123;</span><br><span class="line">    $tmp = $a;</span><br><span class="line">    $a = $b;</span><br><span class="line">    $b = $tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>sort</tag>
+      </tags>
+  </entry>
+</search>
