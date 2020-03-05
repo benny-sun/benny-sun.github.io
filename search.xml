@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>quicksort</title>
+    <title>Fibonacci Sequence</title>
+    <url>/2020/03/05/fibonacci-sequence/</url>
+    <content><![CDATA[<blockquote>
+<p>中譯，斐波那契數列、斐氏數列、黃金分割數列。</p>
+<p>由<code>0</code>和<code>1</code>開始，之後的每個數字都是前兩個數字的和，</p>
+<p>例如：<code>0, 1, 1, 2, 3, 5, 8, 13, 21...</code></p>
+<p>P.S. <code>0</code>不是第一項，是第零項</p>
+</blockquote>
+<img src="https://seyferseed.ru/wp-content/uploads/2017/03/Fibonacci-Spiral.png" class="" width="360" height="226" title="title text" alt="alt text">
+
+<a id="more"></a>
+
+<h1 id="面試常見問題，求斐波那契數列的第n項"><a href="#面試常見問題，求斐波那契數列的第n項" class="headerlink" title="面試常見問題，求斐波那契數列的第n項"></a>面試常見問題，求斐波那契數列的第n項</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>遞迴(Recursion)</p>
+<ul>
+<li><p>時間複雜度：O(2<sup>n</sup>)</p>
+</li>
+<li><p>空間複雜度：O(n)</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($n &lt;= <span class="number">1</span>) <span class="keyword">return</span> $n;</span><br><span class="line">    <span class="keyword">return</span> fib($n - <span class="number">1</span>) + fib($n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>  迭代(Iteration)</p>
+<ul>
+<li>時間複雜度：O(n)</li>
+<li>空間複雜度：O(1)</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    $p1 = <span class="number">0</span>;</span><br><span class="line">    $p2 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">2</span>; $i &lt;= $n; $i++) &#123;</span><br><span class="line">        $tmp = $p1 + $p2;</span><br><span class="line">        $p1 = $p2;</span><br><span class="line">        $p2 = $tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $p2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>動態規劃(Dynamic programming)</p>
+<ul>
+<li>時間複雜度：O(n)</li>
+<li>空間複雜度：O(n)</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    $res = [];</span><br><span class="line">    $res[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    $res[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">2</span>; $i &lt;= $n; $i++) &#123;</span><br><span class="line">        $res[$i] = $res[$i - <span class="number">1</span>] + $res[$i - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $res[$n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h2><p>大絕招，<a href="http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html" target="_blank" rel="noopener">黃金比例數學公式</a>解</p>
+<ul>
+<li>時間複雜度：O(1)</li>
+<li>空間複雜度：O(1)</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    $phi = (<span class="number">1</span> + sqrt(<span class="number">5</span>)) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> round(pow($phi, $n) / sqrt(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quicksort</title>
     <url>/2020/03/05/quicksort/</url>
     <content><![CDATA[<blockquote>
 <p>快速排序，屬於<strong>不穩定排序</strong>。</p>
