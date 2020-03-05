@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>quicksort</title>
+    <url>/2020/03/05/quicksort/</url>
+    <content><![CDATA[<blockquote>
+<p>快速排序，屬於<strong>不穩定排序</strong>。</p>
+<p>運用Divide and Conquer(分治)思想，</p>
+<p>Divide: 在數列中選定任意挑選一個數字，這個數字叫它<code>pivot</code>，有基準點的功能；將數列中小於<code>pivot</code>的數字放在它左側，大於則放右側，這個行為稱作 <strong>partition</strong>。</p>
+<p>Conquer: 最後數列被分為大小兩堆，將這兩堆數列重複上述Divide操作，達到排序效果。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>時間複雜度:</p>
+<ul>
+<li>Best case: O(nlogn)</li>
+<li>Average case: O(nlogn)</li>
+<li>Worst case: O(n<sup>2</sup>)</li>
+</ul>
+<p>空間複雜度: O(1)</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>固定取數列的最後一個數值當作<code>pivot</code>(不一定要最後，可任意選)，<strong>由左至右掃描數列</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 主程式</span></span><br><span class="line"><span class="comment"> * 定義數列的排序範圍</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span><span class="params">(array $nums)</span> </span>&#123;</span><br><span class="line">    $front = <span class="number">0</span>;</span><br><span class="line">    $end = count($nums) - <span class="number">1</span>;</span><br><span class="line">    QSort($nums, $front, $end);</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作Divide and Conquer</span></span><br><span class="line"><span class="comment"> * 遞迴將兩堆數列分別排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">QSort</span><span class="params">(array &amp;$nums, int $front, int $end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($front &lt; $end) &#123;</span><br><span class="line">        $pivot = partition($nums, $front, $end);<span class="comment">//Divide, 這裡的pivot是array key</span></span><br><span class="line">        QSort($nums, $front, $pivot - <span class="number">1</span>);       <span class="comment">//Conquer</span></span><br><span class="line">        QSort($nums, $pivot + <span class="number">1</span>, $end);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 將數列$nums分為左右兩堆</span></span><br><span class="line"><span class="comment"> * $i指針表示「小於pivot的數列中的最後一位」的index</span></span><br><span class="line"><span class="comment"> * $j走訪每個元素並跟pivot比大小</span></span><br><span class="line"><span class="comment"> * 雙指針($i, $j)都由左至右移動</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span><span class="params">(array &amp;$nums, $front, $end)</span> </span>&#123;</span><br><span class="line">    $i = $front - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> ($j = $front; $j &lt; $end; $j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($nums[$j] &lt; $nums[$end]) &#123;  <span class="comment">//若當前元素大於pivot</span></span><br><span class="line">            $i++;                       <span class="comment">//則將指針$i往前走一步</span></span><br><span class="line">            swap($nums[$i], $nums[$j]); <span class="comment">//並與該元素交換</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $i++;                           </span><br><span class="line">    swap($nums[$i], $nums[$end]);   <span class="comment">//把pivot移到數列中間(形成左小右大)</span></span><br><span class="line">    <span class="keyword">return</span> $i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$a, &amp;$b)</span> </span>&#123;</span><br><span class="line">    $tmp = $a;</span><br><span class="line">    $a = $b;</span><br><span class="line">    $b = $tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>修改<code>partition()</code>的實作方式，選擇數列中間的數當作<code>pivot</code>(不一定要中間，可任意選)，<strong>頭尾兩端向數列中間掃描</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 將數列$nums分為左右兩堆</span></span><br><span class="line"><span class="comment"> * 雙指針($front, $end)分別從數列頭尾相向出發，並跟pivot比較</span></span><br><span class="line"><span class="comment"> * 符合條件時($front, $end)兩兩換值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span><span class="params">(array &amp;$nums, int $front, int $end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $pivot = $nums[($front + $end) / <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">while</span> ($front &lt; $end) &#123;</span><br><span class="line">        <span class="keyword">while</span> ($nums[$front] &lt; $pivot) $front++;</span><br><span class="line">        <span class="keyword">while</span> ($nums[$end] &gt; $pivot) $end--;</span><br><span class="line">        <span class="keyword">if</span> ($front &lt; $end) swap($nums[$front], $nums[$end]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>sort</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Selection Sort</title>
     <url>/2020/03/04/selection-sort/</url>
     <content><![CDATA[<blockquote>
@@ -36,8 +69,8 @@
         <category>algorithm</category>
       </categories>
       <tags>
-        <tag>algorithm</tag>
         <tag>sort</tag>
+        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -63,8 +96,8 @@
         <category>algorithm</category>
       </categories>
       <tags>
-        <tag>algorithm</tag>
         <tag>sort</tag>
+        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -91,8 +124,8 @@
         <category>algorithm</category>
       </categories>
       <tags>
-        <tag>algorithm</tag>
         <tag>sort</tag>
+        <tag>algorithm</tag>
       </tags>
   </entry>
 </search>
