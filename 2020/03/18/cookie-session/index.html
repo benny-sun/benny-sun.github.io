@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="中譯，斐波那契數列、斐氏數列、黃金分割數列。 由0和1開始，之後的每個數字都是前兩個數字的和， 例如：0, 1, 1, 2, 3, 5, 8, 13, 21... P.S. 0不是第一項，是第零項">
+  <meta name="description" content="Cookie 和 Session 是HTTP協議之後的偉大產物，目的是要解決HTTP無狀態的特性(Stateless)，讓使用者能與網站平台互動。 Cookie保存在Client端，Session保存在Server端，它們是一個搭配組合。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Fibonacci Sequence">
-<meta property="og:url" content="http://yoursite.com/2020/03/05/fibonacci-sequence/index.html">
+<meta property="og:title" content="Cookie and Session">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/cookie-session/index.html">
 <meta property="og:site_name" content="Benny&#39;s note">
-<meta property="og:description" content="中譯，斐波那契數列、斐氏數列、黃金分割數列。 由0和1開始，之後的每個數字都是前兩個數字的和， 例如：0, 1, 1, 2, 3, 5, 8, 13, 21... P.S. 0不是第一項，是第零項">
+<meta property="og:description" content="Cookie 和 Session 是HTTP協議之後的偉大產物，目的是要解決HTTP無狀態的特性(Stateless)，讓使用者能與網站平台互動。 Cookie保存在Client端，Session保存在Server端，它們是一個搭配組合。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://seyferseed.ru/wp-content/uploads/2017/03/Fibonacci-Spiral.png">
-<meta property="article:published_time" content="2020-03-05T08:47:29.000Z">
-<meta property="article:modified_time" content="2020-03-05T09:01:35.702Z">
+<meta property="og:image" content="https://lh3.googleusercontent.com/HcyMogZI8txBtGZ9vZ44L1lhHzTW8RciiFYXprEFNkmHKUbfEmlqf8Bq54N1oXMZg9yseuHE__h7saPC1KPb4RZfx6Xq9vHKHAN4wPBJzqhcjkIPOr4DCZNrglwTGwLql9xlSDWxu0yBI4BKuWa6sbFhQQsfia4m5ulWEakSSrlu6D9-8AeET1uo38hC-yDZY8AJ9YOIL-WK_dbrUrYmyG2ehjdjVX6FOFBYPrAXgVZFDTPqwa52RdQBEjjzpG8pohGL9Fk36Ik3kjck_fLwX_b99CU6HdAbYhgQ9KvwEfduRUoAxrYtCRqpX6OYdxxmS8PDGivAZ-Pyk-BpIkhJEyuPbwl-TGWTbQ79KxsnRDWAXwcazBNwookhICueQwcrBndtZraxTqR7mLaAh6qIL4562WGZasYDGQkc4ffGpBXHiaIsr0HPGda4LJdUkQNfGkfNwNT8cFNWHubKQwgVD1Cc2JWeRHdJRR-lHxVEHsKaXCkgnc6fyQ68ibuolKIylgfrFvl0P5cf0ymDeZAKu4v-wMn3jFsdHytdQn_-_OJJs16ovqeO9B6I2FsfqBnUDGDGrgt3cfSUiIdiJwx_P1BJjHNphxcaw5PFNFOZxOshdOSnxYEOHXsejZaUgng3LnPMTVM4xDmLX5jRIRP1mNK3m3UCWqFqpO8c6G66IwqpFxHQcXfCRN__qtiqi-BG_dOCX8gism7JbarKksU0FnfIVjIU8Fv9E_k7GmSAHSfwI3ckzA=w968-h811-no">
+<meta property="article:published_time" content="2020-03-18T07:56:33.000Z">
+<meta property="article:modified_time" content="2020-03-18T07:56:33.598Z">
 <meta property="article:author" content="Benny Sun">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://seyferseed.ru/wp-content/uploads/2017/03/Fibonacci-Spiral.png">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/HcyMogZI8txBtGZ9vZ44L1lhHzTW8RciiFYXprEFNkmHKUbfEmlqf8Bq54N1oXMZg9yseuHE__h7saPC1KPb4RZfx6Xq9vHKHAN4wPBJzqhcjkIPOr4DCZNrglwTGwLql9xlSDWxu0yBI4BKuWa6sbFhQQsfia4m5ulWEakSSrlu6D9-8AeET1uo38hC-yDZY8AJ9YOIL-WK_dbrUrYmyG2ehjdjVX6FOFBYPrAXgVZFDTPqwa52RdQBEjjzpG8pohGL9Fk36Ik3kjck_fLwX_b99CU6HdAbYhgQ9KvwEfduRUoAxrYtCRqpX6OYdxxmS8PDGivAZ-Pyk-BpIkhJEyuPbwl-TGWTbQ79KxsnRDWAXwcazBNwookhICueQwcrBndtZraxTqR7mLaAh6qIL4562WGZasYDGQkc4ffGpBXHiaIsr0HPGda4LJdUkQNfGkfNwNT8cFNWHubKQwgVD1Cc2JWeRHdJRR-lHxVEHsKaXCkgnc6fyQ68ibuolKIylgfrFvl0P5cf0ymDeZAKu4v-wMn3jFsdHytdQn_-_OJJs16ovqeO9B6I2FsfqBnUDGDGrgt3cfSUiIdiJwx_P1BJjHNphxcaw5PFNFOZxOshdOSnxYEOHXsejZaUgng3LnPMTVM4xDmLX5jRIRP1mNK3m3UCWqFqpO8c6G66IwqpFxHQcXfCRN__qtiqi-BG_dOCX8gism7JbarKksU0FnfIVjIU8Fv9E_k7GmSAHSfwI3ckzA=w968-h811-no">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/05/fibonacci-sequence/">
+<link rel="canonical" href="http://yoursite.com/2020/03/18/cookie-session/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>Fibonacci Sequence | Benny's note</title>
+  <title>Cookie and Session | Benny's note</title>
   
     <script>
       function sendPageView() {
@@ -203,7 +203,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/fibonacci-sequence/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/cookie-session/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://lh3.googleusercontent.com/Hqlgv5VjneMFjO3Tjs-qXuYMoy35rfFJWpk2teWK4u0_j-FKvcCT6H87uV5tKE3NZE85TlX8yNzC6PZjb6fNX2CSygtdWXPr0jiy3MFVDrDl24201U2KNfhz3sY_CPfT4vG67oKdmMXWD4DSOhpVtnCjrJNAY9Gy0T_NUx3lh0NxSS2u14vNkj9W69dVxq3OsRHhDenflBWiTGLj2tZj2JkJIiZS_SxnCiJ4y3iGlFis6hEHHMOrq4Nr83Ou96Jn9dti1mC80Nn9wCuMGu08Ov4s8X2atkF7g4lhtMnVZaAJFBONEqnKVzR5MmZ3wszsdMeRjrQ1EWduH_n1QslxXzJGnU8FfRlLRVbeqMyZjmkZWzK-1VGuOmhrwKEw8lGOBBHsvyGGzpCX3LvupRzeyCGLNKb8tizvVuCfGDzyr5ymDGshEWt3odKsHoDk-h089lXu5aSIgS9m0JPsXSv4OJ_3QrJahGhnugKBxqXGZKygBNxhNYvc-19bJOCycNVgYZGbp-J_2m-Ttw8g2sbv_ho0E-whstcLqDMZz8So2qHA0RR3ZAKoEKd9vT3DnchSQEUPqjP9miUHRWYtRRy_MKT5TgtKyk1C_CI_0UZFaXZGEpYjSGw_PH8lrLyrC-jkyNQYnW3yfn5LL_ViGu9WCLCWeqcmSQKG3xOtFZy7UqZcBQir31gu4AVWrYyp513vC6KNjyYUCeLTSC_brPanMnCCIfSH65mZzWurkKLMMdgT4kh0rQ=w1007-h939-no">
@@ -216,7 +216,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Fibonacci Sequence
+          Cookie and Session
         </h1>
 
         <div class="post-meta">
@@ -225,9 +225,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-05 16:47:29 / Modified: 17:01:35" itemprop="dateCreated datePublished" datetime="2020-03-05T16:47:29+08:00">2020-03-05</time>
+              <time title="Created: 2020-03-18 15:56:33" itemprop="dateCreated datePublished" datetime="2020-03-18T15:56:33+08:00">2020-03-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,7 +234,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                  <a href="/categories/web-basic-concepts/" itemprop="url" rel="index"><span itemprop="name">web basic concepts</span></a>
                 </span>
             </span>
 
@@ -251,44 +250,61 @@
 
       
         <blockquote>
-<p>中譯，斐波那契數列、斐氏數列、黃金分割數列。</p>
-<p>由<code>0</code>和<code>1</code>開始，之後的每個數字都是前兩個數字的和，</p>
-<p>例如：<code>0, 1, 1, 2, 3, 5, 8, 13, 21...</code></p>
-<p>P.S. <code>0</code>不是第一項，是第零項</p>
+<p>Cookie 和 Session 是<em>HTTP協議</em>之後的偉大產物，目的是要解決HTTP無狀態的特性(Stateless)，讓使用者能與網站平台互動。</p>
+<p>Cookie保存在Client端，Session保存在Server端，它們是一個搭配組合。</p>
 </blockquote>
-<img src="https://seyferseed.ru/wp-content/uploads/2017/03/Fibonacci-Spiral.png" class="" width="360" height="226" title="title text" alt="alt text">
-
 <a id="more"></a>
 
-<h1 id="面試常見問題，求斐波那契數列的第n項"><a href="#面試常見問題，求斐波那契數列的第n項" class="headerlink" title="面試常見問題，求斐波那契數列的第n項"></a>面試常見問題，求斐波那契數列的第n項</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>遞迴(Recursion)</p>
-<ul>
-<li><p>時間複雜度：O(2<sup>n</sup>)</p>
-</li>
-<li><p>空間複雜度：O(n)</p>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($n &lt;= <span class="number">1</span>) <span class="keyword">return</span> $n;</span><br><span class="line">    <span class="keyword">return</span> fib($n - <span class="number">1</span>) + fib($n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>HTTP協議的無狀態特性，Server沒有辦法知道Client的狀態，因此誕生了Cookie和Session，用來紀錄Client狀態，像識別用戶身份、客戶已選購的商品、使用者已填寫的表單等。</p>
+<p>當User在初次登入或第一次選購商品時，Server會產生Session，並將Session ID放在<em>Response Headers</em>的參數<code>Set-Cookie</code>並回應給用戶端，用戶端瀏覽器解析後就生成了Cookie。</p>
+<img src="https://lh3.googleusercontent.com/HcyMogZI8txBtGZ9vZ44L1lhHzTW8RciiFYXprEFNkmHKUbfEmlqf8Bq54N1oXMZg9yseuHE__h7saPC1KPb4RZfx6Xq9vHKHAN4wPBJzqhcjkIPOr4DCZNrglwTGwLql9xlSDWxu0yBI4BKuWa6sbFhQQsfia4m5ulWEakSSrlu6D9-8AeET1uo38hC-yDZY8AJ9YOIL-WK_dbrUrYmyG2ehjdjVX6FOFBYPrAXgVZFDTPqwa52RdQBEjjzpG8pohGL9Fk36Ik3kjck_fLwX_b99CU6HdAbYhgQ9KvwEfduRUoAxrYtCRqpX6OYdxxmS8PDGivAZ-Pyk-BpIkhJEyuPbwl-TGWTbQ79KxsnRDWAXwcazBNwookhICueQwcrBndtZraxTqR7mLaAh6qIL4562WGZasYDGQkc4ffGpBXHiaIsr0HPGda4LJdUkQNfGkfNwNT8cFNWHubKQwgVD1Cc2JWeRHdJRR-lHxVEHsKaXCkgnc6fyQ68ibuolKIylgfrFvl0P5cf0ymDeZAKu4v-wMn3jFsdHytdQn_-_OJJs16ovqeO9B6I2FsfqBnUDGDGrgt3cfSUiIdiJwx_P1BJjHNphxcaw5PFNFOZxOshdOSnxYEOHXsejZaUgng3LnPMTVM4xDmLX5jRIRP1mNK3m3UCWqFqpO8c6G66IwqpFxHQcXfCRN__qtiqi-BG_dOCX8gism7JbarKksU0FnfIVjIU8Fv9E_k7GmSAHSfwI3ckzA=w968-h811-no" class="" title="set-cookie" alt="set-cookie">
 
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>  迭代(Iteration)</p>
-<ul>
-<li>時間複雜度：O(n)</li>
-<li>空間複雜度：O(1)</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    $p1 = <span class="number">0</span>;</span><br><span class="line">    $p2 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">2</span>; $i &lt;= $n; $i++) &#123;</span><br><span class="line">        $tmp = $p1 + $p2;</span><br><span class="line">        $p1 = $p2;</span><br><span class="line">        $p2 = $tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $p2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Cookie會保存在記憶體或是硬碟，因此又分為<em>非持久Cookie(記憶體)</em>和<em>持久Cookie(硬碟)</em>。</p>
+<p>如果用戶的瀏覽器禁用Cookie，那麼就無法識別了，不過有其他替代方法，像是將Session ID帶在URL中(query string)、隱藏表單欄位(Hidden form fields)等。</p>
+<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><p>先前寫PHP用過<code>session_id()</code>來取得當前的Session ID，好奇PHP應該有可以取得目前Server上的所有Session ID吧？但是都找不到這個函式，翻閱<a href="https://www.php.net/manual/en/session.security.php" target="_blank" rel="noopener">官方文件</a>才發現這是PHP對Session的安全保護機制，因此在未使用資料庫的情況，如果想要使用PHP得到Server上的所有Session ID，得先拿到存放Session的目錄位置，並且要有訪問該目錄的權限</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得存放Session的路徑</span></span><br><span class="line"><span class="keyword">echo</span> ini_get(<span class="string">'session.save_path'</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>動態規劃(Dynamic programming)</p>
-<ul>
-<li>時間複雜度：O(n)</li>
-<li>空間複雜度：O(n)</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    $res = [];</span><br><span class="line">    $res[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    $res[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">2</span>; $i &lt;= $n; $i++) &#123;</span><br><span class="line">        $res[$i] = $res[$i - <span class="number">1</span>] + $res[$i - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $res[$n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在這個目錄，使用root權限即可查看目前Server上的所有Session ID</p>
+<p>sessions目錄預設只有root才能讀取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -ld /var/lib/php/sessions</span><br><span class="line">drwx-wx-wt 2 root root 4096 Mar  5 23:39 /var/lib/php/sessions</span><br></pre></td></tr></table></figure>
 
-<h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h2><p>大絕招，<a href="http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html" target="_blank" rel="noopener">黃金比例數學公式</a>解</p>
+
+
+<pre class="mermaid" style="text-align: center;">
+            sequenceDiagram
+            
+Client->>Server: First request
+Note right of Server: Session初始化並建檔
+Note right of Server: $_SESSION設值
+Note right of Server: Session值寫入檔案
+Server-->>Client: Response Headers Set-cookie
+Note left of Client: 生成Cookie
+Note left of Client: 並保存Session ID
+Client->>Server: Request Headers Cookie
+Note right of Server: Session初始化
+Note right of Server: 透過Session ID取值
+Note right of Server: $_SESSION設值
+Note right of Server: Session值寫入檔案
+Server-->>Client: Response Headers Set-cookie
+Note left of Client: 登出帳號
+Client->>Server: Request Headers Cookie
+Note right of Server: session_destroy()
+Note right of Server: 刪除對應的Session檔
+          </pre>
+
+
+
+<p>要注意的是，如果用戶直接關閉瀏覽器，而不是發起登出請求，用戶端的Cookie會消失，但Server上的Session檔案仍存在哦</p>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><blockquote>
+<p>Cookie中跟安全性有關的兩個屬性，<code>Secure</code>和<code>HttpOnly</code>，雖然都是保護機制，不過它們保護的方向不同</p>
+</blockquote>
+<p>Secure: 在傳輸過程中加密Cookie內文，防止<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank" rel="noopener">中間人攻擊</a>，前提是web server也要建立安全連線(HTTPS)</p>
+<p>HttpOnly: 防止Cookie被用戶端的腳本語言跨站存取(Javascript)，避免<a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener">跨站腳本攻擊(XSS)</a></p>
+<hr>
+<p>Ref:</p>
 <ul>
-<li>時間複雜度：O(1)</li>
-<li>空間複雜度：O(1)</li>
+<li><a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" rel="noopener">HTTP cookie - Wikipedia</a></li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span><span class="params">($n)</span> </span>&#123;</span><br><span class="line">    $phi = (<span class="number">1</span> + sqrt(<span class="number">5</span>)) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> round(pow($phi, $n) / sqrt(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -299,7 +315,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/algorithm/" rel="tag"><i class="fa fa-tag"></i> algorithm</a>
+              <a href="/tags/HTTP/" rel="tag"><i class="fa fa-tag"></i> HTTP</a>
           </div>
 
         
@@ -308,13 +324,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/05/quicksort/" rel="prev" title="Quicksort">
-      <i class="fa fa-chevron-left"></i> Quicksort
+    <a href="/2020/03/05/fibonacci-sequence/" rel="prev" title="Fibonacci Sequence">
+      <i class="fa fa-chevron-left"></i> Fibonacci Sequence
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/18/cookie-session/" rel="next" title="Cookie and Session">
-      Cookie and Session <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -374,7 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面試常見問題，求斐波那契數列的第n項"><span class="nav-number">1.</span> <span class="nav-text">面試常見問題，求斐波那契數列的第n項</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三"><span class="nav-number">1.3.</span> <span class="nav-text">方法三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法四"><span class="nav-number">1.4.</span> <span class="nav-text">方法四</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#應用"><span class="nav-number">2.</span> <span class="nav-text">應用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全性"><span class="nav-number">3.</span> <span class="nav-text">安全性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

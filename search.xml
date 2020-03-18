@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Cookie and Session</title>
+    <url>/2020/03/18/cookie-session/</url>
+    <content><![CDATA[<blockquote>
+<p>Cookie 和 Session 是<em>HTTP協議</em>之後的偉大產物，目的是要解決HTTP無狀態的特性(Stateless)，讓使用者能與網站平台互動。</p>
+<p>Cookie保存在Client端，Session保存在Server端，它們是一個搭配組合。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>HTTP協議的無狀態特性，Server沒有辦法知道Client的狀態，因此誕生了Cookie和Session，用來紀錄Client狀態，像識別用戶身份、客戶已選購的商品、使用者已填寫的表單等。</p>
+<p>當User在初次登入或第一次選購商品時，Server會產生Session，並將Session ID放在<em>Response Headers</em>的參數<code>Set-Cookie</code>並回應給用戶端，用戶端瀏覽器解析後就生成了Cookie。</p>
+<img src="https://lh3.googleusercontent.com/HcyMogZI8txBtGZ9vZ44L1lhHzTW8RciiFYXprEFNkmHKUbfEmlqf8Bq54N1oXMZg9yseuHE__h7saPC1KPb4RZfx6Xq9vHKHAN4wPBJzqhcjkIPOr4DCZNrglwTGwLql9xlSDWxu0yBI4BKuWa6sbFhQQsfia4m5ulWEakSSrlu6D9-8AeET1uo38hC-yDZY8AJ9YOIL-WK_dbrUrYmyG2ehjdjVX6FOFBYPrAXgVZFDTPqwa52RdQBEjjzpG8pohGL9Fk36Ik3kjck_fLwX_b99CU6HdAbYhgQ9KvwEfduRUoAxrYtCRqpX6OYdxxmS8PDGivAZ-Pyk-BpIkhJEyuPbwl-TGWTbQ79KxsnRDWAXwcazBNwookhICueQwcrBndtZraxTqR7mLaAh6qIL4562WGZasYDGQkc4ffGpBXHiaIsr0HPGda4LJdUkQNfGkfNwNT8cFNWHubKQwgVD1Cc2JWeRHdJRR-lHxVEHsKaXCkgnc6fyQ68ibuolKIylgfrFvl0P5cf0ymDeZAKu4v-wMn3jFsdHytdQn_-_OJJs16ovqeO9B6I2FsfqBnUDGDGrgt3cfSUiIdiJwx_P1BJjHNphxcaw5PFNFOZxOshdOSnxYEOHXsejZaUgng3LnPMTVM4xDmLX5jRIRP1mNK3m3UCWqFqpO8c6G66IwqpFxHQcXfCRN__qtiqi-BG_dOCX8gism7JbarKksU0FnfIVjIU8Fv9E_k7GmSAHSfwI3ckzA=w968-h811-no" class="" title="set-cookie" alt="set-cookie">
+
+<p>Cookie會保存在記憶體或是硬碟，因此又分為<em>非持久Cookie(記憶體)</em>和<em>持久Cookie(硬碟)</em>。</p>
+<p>如果用戶的瀏覽器禁用Cookie，那麼就無法識別了，不過有其他替代方法，像是將Session ID帶在URL中(query string)、隱藏表單欄位(Hidden form fields)等。</p>
+<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><p>先前寫PHP用過<code>session_id()</code>來取得當前的Session ID，好奇PHP應該有可以取得目前Server上的所有Session ID吧？但是都找不到這個函式，翻閱<a href="https://www.php.net/manual/en/session.security.php" target="_blank" rel="noopener">官方文件</a>才發現這是PHP對Session的安全保護機制，因此在未使用資料庫的情況，如果想要使用PHP得到Server上的所有Session ID，得先拿到存放Session的目錄位置，並且要有訪問該目錄的權限</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 取得存放Session的路徑</span></span><br><span class="line"><span class="keyword">echo</span> ini_get(<span class="string">'session.save_path'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在這個目錄，使用root權限即可查看目前Server上的所有Session ID</p>
+<p>sessions目錄預設只有root才能讀取</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -ld /var/lib/php/sessions</span><br><span class="line">drwx-wx-wt 2 root root 4096 Mar  5 23:39 /var/lib/php/sessions</span><br></pre></td></tr></table></figure>
+
+
+
+<pre class="mermaid" style="text-align: center;">
+            sequenceDiagram
+            
+Client->>Server: First request
+Note right of Server: Session初始化並建檔
+Note right of Server: $_SESSION設值
+Note right of Server: Session值寫入檔案
+Server-->>Client: Response Headers Set-cookie
+Note left of Client: 生成Cookie
+Note left of Client: 並保存Session ID
+Client->>Server: Request Headers Cookie
+Note right of Server: Session初始化
+Note right of Server: 透過Session ID取值
+Note right of Server: $_SESSION設值
+Note right of Server: Session值寫入檔案
+Server-->>Client: Response Headers Set-cookie
+Note left of Client: 登出帳號
+Client->>Server: Request Headers Cookie
+Note right of Server: session_destroy()
+Note right of Server: 刪除對應的Session檔
+          </pre>
+
+
+
+<p>要注意的是，如果用戶直接關閉瀏覽器，而不是發起登出請求，用戶端的Cookie會消失，但Server上的Session檔案仍存在哦</p>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><blockquote>
+<p>Cookie中跟安全性有關的兩個屬性，<code>Secure</code>和<code>HttpOnly</code>，雖然都是保護機制，不過它們保護的方向不同</p>
+</blockquote>
+<p>Secure: 在傳輸過程中加密Cookie內文，防止<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank" rel="noopener">中間人攻擊</a>，前提是web server也要建立安全連線(HTTPS)</p>
+<p>HttpOnly: 防止Cookie被用戶端的腳本語言跨站存取(Javascript)，避免<a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener">跨站腳本攻擊(XSS)</a></p>
+<hr>
+<p>Ref:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" rel="noopener">HTTP cookie - Wikipedia</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>web basic concepts</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Fibonacci Sequence</title>
     <url>/2020/03/05/fibonacci-sequence/</url>
     <content><![CDATA[<blockquote>
