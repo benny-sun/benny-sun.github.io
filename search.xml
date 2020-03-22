@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Database Query Builder &amp; Eloquent ORM</title>
+    <url>/2020/03/22/database-query-builder-and-eloquent-orm/</url>
+    <content><![CDATA[<blockquote>
+<p>Database Query Builder是Laravel將PDO(PHP Data Object)封裝，通過呼叫這些methods，減少寫純SQL語法，提高程式碼可讀性，並建立完整且安全的SQL語法，預防SQL injection發生。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>Eloquent ORM主要對DB table進行封裝，所以在 \Illuminate\Database\Eloquent\Model 可以看到一塊trait，用來操作table欄位和關聯性，遇到table異動，只要修改Model裡的設定即可</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Model</span> <span class="keyword">implements</span> <span class="title">ArrayAccess</span>, <span class="title">Arrayable</span>, <span class="title">Jsonable</span>, <span class="title">JsonSerializable</span>, <span class="title">QueueableEntity</span>, <span class="title">UrlRoutable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Concerns</span>\<span class="title">HasAttributes</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasEvents</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasGlobalScopes</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasRelationships</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasTimestamps</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HidesAttributes</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">GuardsAttributes</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>以下是操作 DB facade 和 Eloquent ORM 經過的class</p>
+<p>DB facade:</p>
+<pre class="mermaid" style="text-align: center;">
+            graph LR
+            \Illuminate\Support\Facades\DB --> \Illuminate\Container\Container --> \Illuminate\Database\Connection --> \Illuminate\Database\Query\Builder
+
+          </pre>
+
+<p>Eloquent ORM:</p>
+<pre class="mermaid" style="text-align: center;">
+            graph LR
+            \Illuminate\Database\Eloquent\Model --> \Illuminate\Database\Connection --> \Illuminate\Database\Query\Builder
+
+          </pre>
+
+<p>兩者最後都會建立query builder，Eloquent ORM也可以使用query builder所有的方法，所以切換不同DB，例如從MySQL換到PostgreSQL，兩者都能無痛轉換，不用擔心SQL語法差異。</p>
+]]></content>
+      <categories>
+        <category>Laravel</category>
+      </categories>
+      <tags>
+        <tag>Laravel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cookie and Session</title>
     <url>/2020/03/18/cookie-session/</url>
     <content><![CDATA[<blockquote>
