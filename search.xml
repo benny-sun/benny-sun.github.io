@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Database Query Builder &amp; Eloquent ORM</title>
+    <title>Laravel Query Builder &amp; Eloquent Builder</title>
     <url>/2020/03/22/database-query-builder-and-eloquent-orm/</url>
     <content><![CDATA[<blockquote>
 <p>Database Query Builder是Laravel將PDO(PHP Data Object)封裝，通過呼叫這些methods，減少寫純SQL語法，提高程式碼可讀性，並建立完整且安全的SQL語法，預防SQL injection發生。</p>
 </blockquote>
 <a id="more"></a>
 
-<p>Eloquent ORM主要對DB table進行封裝，所以在 \Illuminate\Database\Eloquent\Model 可以看到一塊trait，用來操作table欄位和關聯性，遇到table異動，只要修改Model裡的設定即可</p>
+<p>Eloquent ORM，在 \Illuminate\Database\Eloquent\Model 可以看到一塊trait，用來操作table欄位和關聯性，遇到table異動，只要修改Model裡的設定即可</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Model</span> <span class="keyword">implements</span> <span class="title">ArrayAccess</span>, <span class="title">Arrayable</span>, <span class="title">Jsonable</span>, <span class="title">JsonSerializable</span>, <span class="title">QueueableEntity</span>, <span class="title">UrlRoutable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Concerns</span>\<span class="title">HasAttributes</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasEvents</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasGlobalScopes</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasRelationships</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HasTimestamps</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">HidesAttributes</span>,</span><br><span class="line">        <span class="title">Concerns</span>\<span class="title">GuardsAttributes</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -25,11 +25,24 @@
 <p>Eloquent ORM:</p>
 <pre class="mermaid" style="text-align: center;">
             graph LR
-            \Illuminate\Database\Eloquent\Model --> \Illuminate\Database\Connection --> \Illuminate\Database\Query\Builder
+            \Illuminate\Database\Eloquent\Model --> id1([magic function __call]) --> \Illuminate\Database\Eloquent\Builder --> id2([Dependency Injection]) --> \Illuminate\Database\Query\Builder
 
           </pre>
 
-<p>兩者最後都會建立query builder，Eloquent ORM也可以使用query builder所有的方法，所以切換不同DB，例如從MySQL換到PostgreSQL，兩者都能無痛轉換，不用擔心SQL語法差異。</p>
+
+
+<p>DB facade直接使用Query Builder</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">DB</span>;</span><br><span class="line">DB::where(<span class="string">'column'</span>, <span class="string">'value'</span>)-&gt;get();</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Eloquent ORM 先經過Eloquent Builder，依賴注入Query Builder，用到的ORM methods最後是實作注入到Eloquent Builder的Query Builder</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line">User::where(<span class="string">'column'</span>, <span class="string">'value'</span>)-&gt;get();</span><br></pre></td></tr></table></figure>
+
+
+
+<p>用法看起來是一樣的，因為兩者最後都是實作Query Builder，那到底有什麼區別呢？</p>
+<p>待續..</p>
 ]]></content>
       <categories>
         <category>Laravel</category>
