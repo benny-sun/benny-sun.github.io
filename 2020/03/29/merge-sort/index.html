@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="合併排序，屬於穩定排序。把數列從中間拆分成兩段，直到不能再分，再將拆分的元素兩兩比對，依照大小順序合併">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Merge sort">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/merge-sort/index.html">
 <meta property="og:site_name" content="Benny&#39;s note">
+<meta property="og:description" content="合併排序，屬於穩定排序。把數列從中間拆分成兩段，直到不能再分，再將拆分的元素兩兩比對，依照大小順序合併">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-04T08:32:35.000Z">
-<meta property="article:modified_time" content="2020-03-04T08:32:44.210Z">
+<meta property="article:published_time" content="2020-03-29T15:10:30.000Z">
+<meta property="article:modified_time" content="2020-04-20T15:00:38.209Z">
 <meta property="article:author" content="Benny Sun">
+<meta property="article:tag" content="sort">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/">
+<link rel="canonical" href="http://yoursite.com/2020/03/29/merge-sort/">
 
 
 <script id="page-configurations">
@@ -38,12 +42,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>categories | Benny's note
-  </title>
+  <title>Merge sort | Benny's note</title>
   
     <script>
       function sendPageView() {
@@ -190,52 +193,114 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="en">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/merge-sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/Hqlgv5VjneMFjO3Tjs-qXuYMoy35rfFJWpk2teWK4u0_j-FKvcCT6H87uV5tKE3NZE85TlX8yNzC6PZjb6fNX2CSygtdWXPr0jiy3MFVDrDl24201U2KNfhz3sY_CPfT4vG67oKdmMXWD4DSOhpVtnCjrJNAY9Gy0T_NUx3lh0NxSS2u14vNkj9W69dVxq3OsRHhDenflBWiTGLj2tZj2JkJIiZS_SxnCiJ4y3iGlFis6hEHHMOrq4Nr83Ou96Jn9dti1mC80Nn9wCuMGu08Ov4s8X2atkF7g4lhtMnVZaAJFBONEqnKVzR5MmZ3wszsdMeRjrQ1EWduH_n1QslxXzJGnU8FfRlLRVbeqMyZjmkZWzK-1VGuOmhrwKEw8lGOBBHsvyGGzpCX3LvupRzeyCGLNKb8tizvVuCfGDzyr5ymDGshEWt3odKsHoDk-h089lXu5aSIgS9m0JPsXSv4OJ_3QrJahGhnugKBxqXGZKygBNxhNYvc-19bJOCycNVgYZGbp-J_2m-Ttw8g2sbv_ho0E-whstcLqDMZz8So2qHA0RR3ZAKoEKd9vT3DnchSQEUPqjP9miUHRWYtRRy_MKT5TgtKyk1C_CI_0UZFaXZGEpYjSGw_PH8lrLyrC-jkyNQYnW3yfn5LL_ViGu9WCLCWeqcmSQKG3xOtFZy7UqZcBQir31gu4AVWrYyp513vC6KNjyYUCeLTSC_brPanMnCCIfSH65mZzWurkKLMMdgT4kh0rQ=w1007-h939-no">
+      <meta itemprop="name" content="Benny Sun">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Benny's note">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Merge sort
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-<div class="post-meta">
+              <time title="Created: 2020-03-29 23:10:30" itemprop="dateCreated datePublished" datetime="2020-03-29T23:10:30+08:00">2020-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-20 23:00:38" itemprop="dateModified" datetime="2020-04-20T23:00:38+08:00">2020-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>合併排序，屬於<strong>穩定排序</strong>。<br>把數列從中間拆分成兩段，直到不能再分，再將拆分的元素兩兩比對，依照大小順序合併</p>
+</blockquote>
+<a id="more"></a>
+
+<p>時間複雜度:</p>
+<ul>
+<li>Best case: O(nlogn)</li>
+<li>Average case: O(nlogn)</li>
+<li>Worst case: O(nlogn)</li>
+</ul>
+<p>空間複雜度: O(1)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 主程式</span></span><br><span class="line"><span class="comment"> * 定義數列要排序的開頭及結尾指針</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span><span class="params">(array $nums)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $front = <span class="number">0</span>;</span><br><span class="line">    $end = count($nums) - <span class="number">1</span>;</span><br><span class="line">    MSort($nums, $front, $end);</span><br><span class="line">    <span class="keyword">return</span> $nums;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 遞迴將數列兩半拆分</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MSort</span><span class="params">(array &amp;$nums, $front, $end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($front &lt; $end) &#123;</span><br><span class="line">        $mid = intval(($front + $end) / <span class="number">2</span>);</span><br><span class="line">        MSort($nums, $front, $mid); <span class="comment">// 拆分左邊的數列</span></span><br><span class="line">        MSort($nums, $mid + <span class="number">1</span>, $end); <span class="comment">// 拆分右邊的數列</span></span><br><span class="line">        merge($nums, $front, $mid, $end);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 合併</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span><span class="params">(array &amp;$nums, $front, $mid, $end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $len = ($end - $front) / <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    $left = array_slice($nums, $front, $len);</span><br><span class="line">    $right = array_slice($nums, $mid + <span class="number">1</span>, $len);</span><br><span class="line"></span><br><span class="line">    $left[] = PHP_INT_MAX;</span><br><span class="line">    $right[] = PHP_INT_MAX;</span><br><span class="line">    $idxLeft = <span class="number">0</span>; <span class="comment">//左區塊數列的指針</span></span><br><span class="line">    $idxRight = <span class="number">0</span>;<span class="comment">//右區塊數列的指針</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> ($i = $front; $i &lt;= $end; $i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($left[$idxLeft] &lt; $right[$idxRight]) &#123;</span><br><span class="line">            $nums[$i] = $left[$idxLeft];</span><br><span class="line">            $idxLeft++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $nums[$i] = $right[$idxRight];</span><br><span class="line">            $idxRight++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/sort/" rel="tag"><i class="fa fa-tag"></i> sort</a>
+              <a href="/tags/algorithm/" rel="tag"><i class="fa fa-tag"></i> algorithm</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/22/database-query-builder-and-eloquent-orm/" rel="prev" title="Laravel Query Builder & Eloquent Builder">
+      <i class="fa fa-chevron-left"></i> Laravel Query Builder & Eloquent Builder
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              3 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-basic-concepts/">web basic concepts</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
