@@ -10,7 +10,7 @@ draft: true
 >
 > 運用分而治之思想 (Divide and Conquer) 來優化排序效率。
 
-
+![sorting-quicksort](https://picbed.stdcdn.com/2021/09/63bdbe25896c2e78e98c77ddf252a364.gif)
 
 #### Divide
 
