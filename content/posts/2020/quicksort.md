@@ -1,7 +1,7 @@
 ---
 title: "Quicksort"
 date: 2020-03-05T23:46:25+08:00
-draft: true
+draft: false
 ---
 
 # Quicksort

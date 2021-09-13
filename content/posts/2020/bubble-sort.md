@@ -1,7 +1,7 @@
 ---
 title: "Bubble Sort"
 date: 2020-03-04T22:25:23+08:00
-draft: true
+draft: false
 ---
 
 # Bubble Sort

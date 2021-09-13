@@ -1,7 +1,7 @@
 ---
 title: "Selection Sort"
 date: 2020-03-04T23:10:55+08:00
-draft: true
+draft: false
 ---
 
 # Selection Sort

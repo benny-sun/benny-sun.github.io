@@ -1,7 +1,7 @@
 ---
 title: "Insertion Sort"
 date: 2020-03-04T22:59:24+08:00
-draft: true
+draft: false
 ---
 
 # Insertion Sort
