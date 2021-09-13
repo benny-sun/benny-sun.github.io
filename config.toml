@@ -1,7 +1,7 @@
 baseURL = "https://benny-sun.github.io/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
-title = "Even - A super concise theme for Hugo"
+title = "班尼の筆記"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
@@ -34,9 +34,9 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Post"
+  name = "Posts"
   weight = 20
-  identifier = "post"
+  identifier = "posts"
   url = "/post/"
 [[menu.main]]
   name = "Tags"
