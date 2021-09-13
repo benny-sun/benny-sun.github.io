@@ -4,13 +4,13 @@ date: 2020-03-04T22:59:24+08:00
 draft: false
 ---
 
-# Insertion Sort
-
 > 又叫插入排序，屬於**穩定排序**。
 >
-> 就好像玩撲克牌整理牌組，將未排序的牌堆插入已排序的牌堆那樣，如果在大部分的元素已有序，使用此排序法效率較好。
+> 像是玩撲克牌整理牌組，將未排序的牌堆插入已排序的牌堆那樣，如果在大部分的元素已是有序的話使用此排序法效率較好。
 
 ![sorting-insertion-sort](https://picbed.stdcdn.com/2021/09/3ca2435acd8cbc3a61e253e3d6a20ac1.gif)
+
+## Time & Space complexity
 
 |  Case   | Time complexity  | Space complexity |
 | :-----: | :--------------: | :--------------: |
@@ -18,7 +18,7 @@ draft: false
 | Average | O(n<sup>2</sup>) |       O(1)       |
 |  Worst  | O(n<sup>2</sup>) |       O(1)       |
 
-
+## 實作
 
 ```php
 function insertionSort(array $nums) {
