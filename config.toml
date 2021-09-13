@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://benny-sun.github.io/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Even - A super concise theme for Hugo"
@@ -34,10 +34,10 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Posts"
+  name = "Post"
   weight = 20
-  identifier = "posts"
-  url = "/posts/"
+  identifier = "post"
+  url = "/post/"
 [[menu.main]]
   name = "Tags"
   weight = 30
