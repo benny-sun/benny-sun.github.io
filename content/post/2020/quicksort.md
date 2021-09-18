@@ -11,11 +11,12 @@ draft: false
 ## Divide & Conquer
 ### Divide
 
-從數列裡挑任意一元素當作基準點(`pivot`)；將小於 `pivot` 的數字放在左側，大於 `pivot` 的數字放右側，這個行為稱作 **Partition**。
+從數列裡挑任意一元素當作基準點(`pivot`) 將數列分成兩邊，一邊是大於 `pivot`，另一邊是小於 `pivot`；
+這個行為稱作 **Partition**，Partition 執行完成後將 `pivot` 回傳，這也會當作後續 Partition 的起點和終點。
 
 ### Conquer
 
-重複執行 Divide 直到不能再劃分，排序效果就像下面圖片呈現的那樣(紅色是 `pivot`)：
+將 Partition 的結果分別排序，效果就像下面圖片呈現的那樣(紅色是 `pivot`)：
 
 ![sorting-quicksort](https://picbed.stdcdn.com/2021/09/63bdbe25896c2e78e98c77ddf252a364.gif)
 
@@ -106,3 +107,8 @@ function partition(array &$nums, int $front, int $end)
     return $end;
 }
 ```
+
+## Reference
+
+- [示意圖](https://commons.wikimedia.org/wiki/File:Quicksort.gif)
+- [演算法筆記](https://web.ntnu.edu.tw/~algo/Sort.html)
