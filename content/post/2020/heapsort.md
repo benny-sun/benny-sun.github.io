@@ -1,10 +1,13 @@
 ---
 title: "Heapsort"
-date: 2020-03-29T23:30:16+08:00
+date: 2020-03-29 10:30:16+08:00
 draft: false
 ---
 
 > 又叫堆積排序，屬於穩定排序。
+> 把陣列作為 binary tree 的資料結構，逐一把元素加入 heap 達到排序效果。
+
+![sorting-heapsort](https://picbed.stdcdn.com/2021/09/fa8f3368cfbee8aaa48ec2174a8119872d985e230f34ffa15ed06d63e170e635.gif)
 
 ## Time & Space complexity
 
@@ -51,7 +54,7 @@ function buildMaxHeap(array &$array) {
 function maxHeapify(array &$array, int $root, int $length) {
     $left = 2 * $root + 1;
     $right = $left + 1;
-    $largest = $root; // 紀錄「根、左、右」，值最大的節點 index
+    $largest = $root; // 紀錄「根、左、右」，最大值節點 index
 
     if ($left < $length && $array[$left] > $array[$root])
         $largest = $left;
@@ -59,8 +62,8 @@ function maxHeapify(array &$array, int $root, int $length) {
     if ($right < $length && $array[$right] > $array[$largest])
         $largest = $right;
 
-    if ($root != $largest) {                    // 若根節點不是三者中最大的
-        swap($array[$root], $array[$largest]);  // 就與最大那個節點調換
+    if ($root != $largest) {                    // 若根節點值不是三者中最大的
+        swap($array[$root], $array[$largest]);  // 就與最大值節點調換
         maxHeapify($array, $largest, $length);
     }
 }
@@ -75,3 +78,7 @@ function swap(&$a, &$b) {
 }
 ```
 
+## Reference
+
+- [示意圖](https://www.codesdope.com/course/algorithms-heapsort/)
+- [演算法筆記](https://web.ntnu.edu.tw/~algo/Sort.html)
