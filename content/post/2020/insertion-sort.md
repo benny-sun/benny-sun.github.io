@@ -2,6 +2,7 @@
 title: "Insertion Sort"
 date: 2020-03-04T22:59:24+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 又叫插入排序，屬於**穩定排序**。

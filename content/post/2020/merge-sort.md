@@ -2,6 +2,7 @@
 title: "Merge Sort"
 date: 2020-03-29T17:33:15+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 合併排序，屬於穩定排序。

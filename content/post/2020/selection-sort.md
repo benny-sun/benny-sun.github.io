@@ -2,6 +2,7 @@
 title: "Selection Sort"
 date: 2020-03-04T23:10:55+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 選擇排序，屬於**不穩定排序**。

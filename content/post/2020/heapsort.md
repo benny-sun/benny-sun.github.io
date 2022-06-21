@@ -2,6 +2,7 @@
 title: "Heapsort"
 date: 2020-03-29 10:30:16+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 又叫堆積排序，屬於穩定排序。

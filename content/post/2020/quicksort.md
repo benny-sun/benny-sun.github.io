@@ -2,6 +2,7 @@
 title: "Quicksort"
 date: 2020-03-05T23:46:25+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 快速排序，屬於**不穩定排序**。

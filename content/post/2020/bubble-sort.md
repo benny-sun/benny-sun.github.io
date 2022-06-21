@@ -2,6 +2,7 @@
 title: "Bubble Sort"
 date: 2020-03-04T22:25:23+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 又叫氣泡排序、泡沫排序，屬於**穩定排序**。

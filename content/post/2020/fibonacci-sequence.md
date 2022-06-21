@@ -2,6 +2,7 @@
 title: "Fibonacci Sequence"
 date: 2020-03-06T22:25:05+08:00
 draft: false
+tags: ["algorithm"]
 ---
 
 > 又稱費波那契數列、斐氏數列、黃金分割數列。
