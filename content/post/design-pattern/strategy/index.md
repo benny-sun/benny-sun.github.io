@@ -1,10 +1,8 @@
 ---
 title: "Strategy pattern"
 date: 2022-06-12T13:28:28+08:00
-draft: true
-showToc: false
-disableShare: true
-linenos: true
+draft: false
+tags: ["design pattern"]
 ---
 
 ## 概念
