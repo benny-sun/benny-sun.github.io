@@ -55,7 +55,7 @@ params:
     # disableThemeToggle: true
     ShowShareButtons: false
     ShowReadingTime: true
-    # disableSpecial1stPost: true
+    disableSpecial1stPost: true
     displayFullLangName: true
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
@@ -78,16 +78,16 @@ params:
             - name: Tags
               url: tags
 
-    homeInfoParams:
-        Title: "PaperMod"
-        Content: >
-            Welcome to demo of hugo's theme PaperMod.
+    # homeInfoParams:
+    #     Title: "PaperMod"
+    #     Content: >
+    #         Welcome to demo of hugo's theme PaperMod.
 
-            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+    #         - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
 
-            - Do give a 🌟 on Github !
+    #         - Do give a 🌟 on Github !
 
-            - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
+    #         - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
 
     socialIcons:
         - name: github
