@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>design pattern on 班尼の筆記</title>
+    <link>https://benny-sun.github.io/tags/design-pattern/</link>
+    <description>Recent content in design pattern on 班尼の筆記</description>
+    <image>
+      <url>https://benny-sun.github.io/papermod-cover.png</url>
+      <link>https://benny-sun.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 12 Jun 2022 13:28:28 +0800</lastBuildDate><atom:link href="https://benny-sun.github.io/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Strategy pattern</title>
+      <link>https://benny-sun.github.io/post/design-pattern/strategy/</link>
+      <pubDate>Sun, 12 Jun 2022 13:28:28 +0800</pubDate>
+      
+      <guid>https://benny-sun.github.io/post/design-pattern/strategy/</guid>
+      <description>概念 像是選擇不同交通方式上班， 把影響選擇的因素(例如: 天候、預算、身體狀況、緊急程度等)和選擇帶來的後果(例如: 路線、耗時、花費等)拆分開來管理。
+圖片來源: https://refactoring.guru/design-patterns/strategy  這篇來自讀過 Design Patterns Explained: A New Perspective on Object Oriented Design, 2nd Edition 一書中 The Strategy Pattern 章節的重點整理。
+作者提出一系列面對新需求的應對方式使系統程式碼更具彈性，在面對未來的變化能更從容、更易擴充和維護。
+ 處理新需求之案例研究 書中以一個在美國的國際電商為實務案例來說明在面對新需求的思考和處理方式。
+訂單處理系統之系統架構 TaskController
+ 處理銷售請求 決定何時將請求交給 SalesOrder 來處理訂單  SalesOrder
+ 透過 GUI 填寫訂單 處理稅額計算 &amp;lt;&amp;ndash; 本章討論案例 列印收據    新需求：支援加拿大的稅額計算
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  // Handle Tax switch (myNation) { case US: // US Tax rules here break;  case Canada: // Canadian Tax rules here break; } // Handle Currency switch (myNation) { case US: // US Currency rules here break;  case Canada: // Canadian Currency rules here break; } // Handle Date Format switch (myNation) { case US: // use mm/dd/yy format break;  case Canada: // use dd/mm/yy format break; }     新需求：支援德國的稅額計算＆多國語系</description>
+    </item>
+    
+  </channel>
+</rss>
